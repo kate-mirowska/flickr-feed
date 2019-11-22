@@ -26,4 +26,13 @@
     a {
         border-bottom: 1px solid #525252;
     }
+
+    .feed-item-author {
+        margin-right: 15px;
+    }
+
+    .feed-item-author,
+    .feed-item-link {
+        display: inline-block
+    }
 }

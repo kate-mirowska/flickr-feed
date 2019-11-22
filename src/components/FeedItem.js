@@ -33,14 +33,16 @@ class FeedItem extends Component {
                         <a 
                             href={`https://www.flickr.com/${author_id}`} 
                             title="Photo author"
+                            target="_blank"
                         >
                             Photo author
                         </a>
                     </div>
                     <div className="feed-item-link">
                         <a 
-                            href={`https://www.flickr.com/${link}`} 
+                            href={link} 
                             title="View on Flickr"
+                            target="_blank"
                         >
                             View on Flickr
                         </a>
