@@ -1,0 +1,29 @@
+.feed-wrapper {
+    ul {
+        border: 1px solid #d9d0d0;
+    }
+
+    li {
+        border-bottom: 1px solid #d9d0d0;
+    }
+}
+
+.feed-item-wrapper {
+    display: flex;
+}
+
+.feed-item-image {
+    min-width: 300px;
+    padding: 1em;
+    margin: 0.5em;
+
+    img {
+        width: 100%;
+    }
+}
+
+.feed-item-content {
+    a {
+        border-bottom: 1px solid #525252;
+    }
+}
