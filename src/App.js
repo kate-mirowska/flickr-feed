@@ -1,17 +1,20 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Feed from './components/Feed';
+import FeedItemPage from './components/FeedItemPage';
 
-function App() {
-  return (
-    <div className="App">
-      <header>
-        <h1>Flickr public feed</h1>
-      </header>
-      <main>
-        <Feed />
-      </main>
-    </div>
-  );
+
+class App extends Component {
+  render() {
+    return (
+        <Router>
+          <div className="App">
+            <Route exact path="/" component={Feed} />
+            <Route path="/post/:id" render={(props) => <FeedItemPage feedItem={this.state} />} />
+          </div>
+        </Router>
+    );
+  }
 }
 
 export default App;

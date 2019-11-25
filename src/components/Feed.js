@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import FeedItem from './FeedItem';
 
-import PropTypes from 'prop-types';
-
 class Feed extends Component {
     constructor(props) {
         super(props);
@@ -19,14 +17,12 @@ class Feed extends Component {
 
         axios.get(urlEndpoint)
             .then((response) => { 
-                console.log(response.data)
                 this.setState({
                     feedItems: response.data.items,
                     isLoaded: true
                 })
             })
             .catch((error) => { 
-                console.log(error)
                 this.setState({
                     isLoaded: true,
                     error
@@ -37,22 +33,25 @@ class Feed extends Component {
 
     render() {
         return (
-            <div className="feed-wrapper">
-                <ul>
-                    {this.state.feedItems.map((item, index) => (
-                            <FeedItem 
-                                key={index} 
-                                feedItem={item}
-                            />
-                        )
-                    )}
-                </ul>
+            <div className="App">
+                <header>
+                    <h1>Flickr public feed</h1>
+                </header>
+                <div className="feed-wrapper">
+                    <ul>
+                        {this.state.feedItems.map((item, index) => (
+                                <FeedItem 
+                                    key={index} 
+                                    feedItem={item}
+                                    id={index}
+                                />
+                            )
+                        )}
+                    </ul>
+                </div>
             </div>
         )
     }
-}
-
-Feed.propTypes = {
 }
 
 export default Feed;
