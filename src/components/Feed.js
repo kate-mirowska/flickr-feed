@@ -1,37 +1,34 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import { connect } from "react-redux";
+import fetchFeed from "../actions/fetch-feed";
 import FeedItem from './FeedItem';
 
-class Feed extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-          error: null,
-          isLoaded: false,
-          feedItems: []
-        };
-    }
-    
+class ConnectedFeed extends Component {
     componentDidMount() {
-        const urlEndpoint = `https://api.flickr.com/services/feeds/photos_public.gne?tags=space&tagmode=all&format=json&nojsoncallback=1`;
-
-        axios.get(urlEndpoint)
-            .then((response) => { 
-                this.setState({
-                    feedItems: response.data.items,
-                    isLoaded: true
-                })
-            })
-            .catch((error) => { 
-                this.setState({
-                    isLoaded: true,
-                    error
-                })
-            }
-        )
+        this.props.dispatch(fetchFeed())
     }
 
     render() {
+        if (this.props.pending) {
+            return (
+                <div>Loading....</div>
+            ) 
+        }
+
+        if (this.props.error) {
+            return (
+                <div>There was an error while fetching the data.</div>
+            )
+        }
+
+        if (this.props.feed === null) {
+            return (
+                <div className="no-feed-message">
+                    <span>No feed to show</span>
+                </div>
+            )
+        }
+
         return (
             <div className="App">
                 <header>
@@ -39,14 +36,15 @@ class Feed extends Component {
                 </header>
                 <div className="feed-wrapper">
                     <ul>
-                        {this.state.feedItems.map((item, index) => (
-                                <FeedItem 
-                                    key={index} 
+                        {
+                            this.props.feed.map((item, index) => (
+                                <FeedItem
+                                    key={index}
                                     feedItem={item}
                                     id={index}
                                 />
-                            )
-                        )}
+                            ))
+                        }
                     </ul>
                 </div>
             </div>
@@ -54,4 +52,12 @@ class Feed extends Component {
     }
 }
 
-export default Feed;
+const mapStateToProps = (state) => {
+    return {
+        feed: state.fetchFeed.feed,
+        pending: state.pending,
+        error: state.error
+    }
+}
+
+export default connect(mapStateToProps)(ConnectedFeed)
