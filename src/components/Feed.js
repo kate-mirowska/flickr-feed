@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
+import Header from './Header';
 import fetchFeed from "../actions/fetch-feed";
 import FeedItem from './FeedItem';
 
@@ -30,10 +31,8 @@ class ConnectedFeed extends Component {
         }
 
         return (
-            <div className="App">
-                <header>
-                    <h1>Flickr public feed</h1>
-                </header>
+            <>
+                <Header title={'Flickr public feed'}/>
                 <div className="feed-wrapper">
                     <ul>
                         {
@@ -47,7 +46,7 @@ class ConnectedFeed extends Component {
                         }
                     </ul>
                 </div>
-            </div>
+            </>
         )
     }
 }

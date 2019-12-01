@@ -36,26 +36,28 @@ class FeedItem extends Component {
                 </div>
                 <div className="feed-item-content">
                     <h2>{this.truncateString(title, 50)}</h2>
-                    <div className="feed-item-date">Published: {this.formatDate(published)}</div>
-                    <div className="feed-item-author">
-                        <a 
-                            href={`https://www.flickr.com/${author_id}`} 
-                            title="Photo author"
-                            rel="noopener noreferrer"
-                            target="_blank"
-                        >
-                            Photo author
-                        </a>
-                    </div>
-                    <div className="feed-item-link">
-                        <a 
-                            href={link} 
-                            title="View on Flickr"
-                            rel="noopener noreferrer"
-                            target="_blank"
-                        >
-                            View on Flickr
-                        </a>
+                    <div className="feed-item-info">
+                        <div className="feed-item-date">Published: {this.formatDate(published)}</div>
+                        <div className="feed-item-author">
+                            <a
+                                href={`https://www.flickr.com/${author_id}`}
+                                title="Photo author"
+                                rel="noopener noreferrer"
+                                target="_blank"
+                            >
+                                Photo author
+                            </a>
+                        </div>
+                        <div className="feed-item-link">
+                            <a
+                                href={link}
+                                title="View on Flickr"
+                                rel="noopener noreferrer"
+                                target="_blank"
+                            >
+                                View on Flickr
+                            </a>
+                        </div>
                     </div>
                 </div>
             </li>

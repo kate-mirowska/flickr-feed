@@ -1,1 +1,4 @@
-@import 'app', 'feed', 'general';
+@import './base/breakpoints';
+@import './base/general';
+@import './compontents/app'; 
+@import './compontents/feed';

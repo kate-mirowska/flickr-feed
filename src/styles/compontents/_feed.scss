@@ -1,0 +1,82 @@
+.feed-wrapper {
+    ul {
+        border: 1px solid #d9d0d0;
+    }
+
+    li {
+        border-bottom: 1px solid #d9d0d0;
+    }
+}
+
+.feed-item {
+    &-wrapper {
+        display: flex;
+
+        @media (max-width: $screen-s) {
+            flex-direction: column;
+        }
+    }
+
+    &-info {
+        display: grid;
+        grid-template-areas: 'author date link';
+        grid-column-gap: 10px;
+        grid-row-gap: 10px;
+
+
+        @media (max-width: $screen-m) {
+            grid-template-areas: 
+                'date date date'
+                'author link .';
+        }
+
+        @media (max-width: $screen-s) {
+            grid-template-areas: 
+                'date date date'
+                'author author author'
+                'link link link';
+        }
+    }
+
+    &-image {
+        min-width: 300px;
+        padding: 1em;
+        margin: 0.5em;
+
+        img {
+            width: 100%;
+        }
+    }
+
+    &-content {
+        a {
+            border-bottom: 1px solid #525252;
+        }
+
+        @media (max-width: $screen-s) {
+            padding: 0 1em 1em;
+            margin: 0 0.5em;
+
+            h2 {
+                margin-top: 0;
+            }
+        }
+    }
+
+    &-date {
+        grid-area: date;
+    }
+
+    &-author {
+        grid-area: author;
+    }
+
+    &-link {
+        grid-area: link;
+    }
+
+    &-author,
+    &-link {
+        display: inline-block;
+    }
+}
