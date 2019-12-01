@@ -18,7 +18,6 @@ class FeedItem extends Component {
 
     render() {
         const { media, title, published, author_id, link } = this.props.feedItem;
-
         this.formatDate(published);
 
         return (
@@ -27,7 +26,8 @@ class FeedItem extends Component {
                     <Link to={{
                         pathname: `/post/${this.props.id}`, 
                         feedItem: this.props.feedItem,
-                        formattedDate: this.formatDate(published)
+                        formattedDate: this.formatDate(published),
+                        id: this.props.id
                     }}>
                         <div className="feed-item-image">
                             <img src={media.m} alt=""/>

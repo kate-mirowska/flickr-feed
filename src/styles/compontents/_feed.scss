@@ -49,6 +49,10 @@
     }
 
     &-content {
+        h2 {
+            cursor: pointer;
+        }
+
         a {
             border-bottom: 1px solid #525252;
         }
